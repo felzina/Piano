@@ -16,7 +16,6 @@ body {
 }
 
 .wrapper {
-    width: 780px;
     border-radius: 20px;
     padding: 35px 40px;
     background: #141414;
@@ -123,4 +122,8 @@ header .column span {
     width: 100%;
     font-size: 1.13rem;
     text-align: center;
+}
+
+.piano-keys .key.hide span {
+    display: none;
 }
