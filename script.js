@@ -6,35 +6,32 @@ let allKeys = [],
 audio = new Audio("tunes/a.wav");
 
 const playTune = (key) => {
-    audio.src = `tunes/${key}.wav`;//passing audio scr based on key pressed
-    audio.play(); //playing audio
+    audio.src = `tunes/${key}.wav`;
+    audio.play();
 
-    const clickedKey = document.querySelector(`[data-key="${key}"]`); //getting clicked key element
+    const clickedKey = document.querySelector(`[data-key="${key}"]`);
     clickedKey.classList.add("active");
-    setTimeout(() => { //removing active after 150ms
+    setTimeout(() => {
         clickedKey.classList.remove("active");
-    }, 150)
+    }, 150);
 };
 
 pianoKeys.forEach(key => {
-    allKeys.push(key.dataset.key) //adding data-key value to the allKeys array
-    //calling playTune function with data-key as an argument
+    allKeys.push(key.dataset.key);
     key.addEventListener("click", () => playTune(key.dataset.key));
 });
 
 const handleVolume = (e) => {
-    audio.volume = e.target.value; //passing the range slider value as an audio volume
-}
+    audio.volume = e.target.value;
+};
 
 const showHideKeys = () => {
-    //toggling hide class from each key on the checkbox click
     pianoKeys.forEach(key => key.classList.toggle("hide"));
-}
+};
 
 const pressedKey = (e) => {
-    //if the pressed key is in the allKeys array, only call the playTune function
     if(allKeys.includes(e.key)) playTune(e.key);
-}
+};
 
 keysCheckbox.addEventListener("click", showHideKeys);
 volumeSlider.addEventListener("input", handleVolume);
